@@ -1,0 +1,21 @@
+public class CompareTest {
+
+    public static void main(String[] args) {
+        String s1 = new String("hello");
+        String s2 = new String("hello");
+
+        // Using '==' to compare references
+        if (s1 == s2) {
+            System.out.println("s1 and s2 reference the same object.");
+        } else {
+            System.out.println("s1 and s2 do not reference the same object.");
+        }
+
+        // Using 'equals()' to compare content/values
+        if (s1.equals(s2)) {
+            System.out.println("s1 and s2 have the same content.");
+        } else {
+            System.out.println("s1 and s2 have different content.");
+        }
+    }
+}
