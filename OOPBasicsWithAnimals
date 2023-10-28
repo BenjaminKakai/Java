@@ -1,0 +1,45 @@
+// Demonstrating OOP concepts in Java
+
+// Base class (demonstrating encapsulation)
+class Animal {
+    private String name; // private variable (encapsulation)
+
+    // Constructor (demonstrating encapsulation)
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    // Public method to access private variable (encapsulation)
+    public String getName() {
+        return name;
+    }
+
+    public void sound() {
+        System.out.println(name + " makes a sound.");
+    }
+}
+
+// Derived class (demonstrating inheritance)
+class Dog extends Animal {
+    // Constructor
+    public Dog(String name) {
+        super(name); // calling parent class constructor
+    }
+
+    // Overriding the sound method (demonstrating polymorphism)
+    @Override
+    public void sound() {
+        System.out.println(getName() + " barks.");
+    }
+}
+
+public class OOPDemo {
+
+    public static void main(String[] args) {
+        Animal genericAnimal = new Animal("Generic Animal");
+        Dog buddy = new Dog("Buddy");
+
+        genericAnimal.sound(); // Calls sound method of Animal
+        buddy.sound(); // Calls overridden sound method of Dog (polymorphism)
+    }
+}
