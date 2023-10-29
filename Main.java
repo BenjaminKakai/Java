@@ -1,52 +1,17 @@
-import java.io.*;
-import java.util.*;
-
-public class Solution {
+// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
+// then press Enter. You can now see whitespace characters in your code.
+public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int q = sc.nextInt();
-        sc.nextLine();
+        // Press Alt+Enter with your caret at the highlighted text to see how
+        // IntelliJ IDEA suggests fixing it.
+        System.out.printf("Hello and welcome!");
 
-        while(q-- > 0) {
-            String s = sc.nextLine();
-            System.out.println(palindromeIndex(s));
+        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
+        for (int i = 1; i <= 5; i++) {
+
+            // Press Shift+F9 to start debugging your code. We have set one breakpoint
+            // for you, but you can always add more by pressing Ctrl+F8.
+            System.out.println("i = " + i);
         }
     }
-
-    public static int palindromeIndex(String s) {
-        int i = 0, j = s.length() -1;
-
-        while(i < j && s.charAt(i) == s.charAt(j)) {
-
-            i++;
-            j--;
-        }
-
-        if(i >= j) {
-            return -1;
-        }
-
-        if(isPalindrome(s, i + 1, j)) {
-            return i;
-        }
-
-        if(isPalindrome(s, i, j -1)) {
-            return j;
-        }
-
-        return -1;
-    }
-
-    public static boolean isPalindrome(String s, int i, int j) {
-        while(i < j) {
-            if(s.charAt(i) != s.charAt(j)) {
-                return false;
-            }
-
-            i++;
-            j--;
-        }
-        return true;
-    }
-
 }
