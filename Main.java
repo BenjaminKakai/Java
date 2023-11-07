@@ -1,17 +1,26 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+package org.example;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        System
+        System.out.println("for (int i = 0; i < n; i++) {\n" +
+                "    // Track number of elements swapped during a single array traversal\n" +
+                "    int numberOfSwaps = 0;\n" +
+                "    \n" +
+                "    for (int j = 0; j < n - 1; j++) {\n" +
+                "        // Swap adjacent elements if they are in decreasing order\n" +
+                "        if (a[j] > a[j + 1]) {\n" +
+                "            swap(a[j], a[j + 1]);\n" +
+                "            numberOfSwaps++;\n" +
+                "        }\n" +
+                "    }\n" +
+                "    \n" +
+                "    // If no elements were swapped during a traversal, array is sorted\n" +
+                "    if (numberOfSwaps == 0) {\n" +
+                "        break;\n" +
+                "    }\n" +
+                "}");
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
     }
 }
