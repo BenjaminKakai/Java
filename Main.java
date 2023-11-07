@@ -1,26 +1,31 @@
-package org.example;
-
 public class Main {
     public static void main(String[] args) {
-        System
-        System.out.println("for (int i = 0; i < n; i++) {\n" +
-                "    // Track number of elements swapped during a single array traversal\n" +
-                "    int numberOfSwaps = 0;\n" +
-                "    \n" +
-                "    for (int j = 0; j < n - 1; j++) {\n" +
-                "        // Swap adjacent elements if they are in decreasing order\n" +
-                "        if (a[j] > a[j + 1]) {\n" +
-                "            swap(a[j], a[j + 1]);\n" +
-                "            numberOfSwaps++;\n" +
-                "        }\n" +
-                "    }\n" +
-                "    \n" +
-                "    // If no elements were swapped during a traversal, array is sorted\n" +
-                "    if (numberOfSwaps == 0) {\n" +
-                "        break;\n" +
-                "    }\n" +
-                "}");
+        // Define the first two numbers in the Fibonacci sequence
+        int a = 0;
+        int b = 1;
 
+        // Define a variable to hold the element number
+        int element = 1;
 
+        // Print the first two numbers in the Fibonacci sequence, along with the element number
+        System.out.println(element + ": " + a);
+        element++;
+        System.out.println(element + ": " + b);
+        element++;
+
+        // Define a variable to hold the next number in the sequence
+        int c = a + b;
+
+        // Loop until the next number is greater than or equal to 50
+        while (c < 50) {
+            // Print the next number in the sequence, along with the element number
+            System.out.println(element + ": " + c);
+            element++;
+
+            // Calculate the next number in the sequence
+            a = b;
+            b = c;
+            c = a + b;
+        }
     }
 }
