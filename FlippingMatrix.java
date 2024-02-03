@@ -17,7 +17,7 @@ public class FlippingMatrix {
 
             long sum = 0;
             for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; i++) {
+                for (int j = 0; j < n; j++) {
 
                     sum += Math.max (
                             Math.max(matrix[i][j], matrix[i][n * 2 - j - 1]),
