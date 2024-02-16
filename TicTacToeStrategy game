@@ -1,0 +1,167 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <random>
+#include <map>
+
+const int BOARD_SIZE = 3;
+
+// Interface for different strategies
+class TicTacToeStrategy {
+public:
+    virtual std::vector<int> getBotMoves(const std::vector<int>& userMoves, const std::vector<int>& botMoves) = 0;
+    virtual ~TicTacToeStrategy() {}
+};
+
+// Strategy 1: Fixed sequence
+class Strategy1 : public TicTacToeStrategy {
+public:
+    std::vector<int> getBotMoves(const std::vector<int>& userMoves, const std::vector<int>& botMoves) override {
+        std::vector<int> allMoves(userMoves);
+        allMoves.insert(allMoves.end(), botMoves.begin(), botMoves.end());
+
+        for (int i = 0; i < BOARD_SIZE * BOARD_SIZE; ++i) {
+            if (std::find(allMoves.begin(), allMoves.end(), i) == allMoves.end()) {
+                return {i};
+            }
+        }
+        return {};
+    }
+};
+
+// Strategy 2: Respond to user moves sequentially
+class Strategy2 : public TicTacToeStrategy {
+public:
+    std::vector<int> getBotMoves(const std::vector<int>& userMoves, const std::vector<int>& botMoves) override {
+        std::vector<int> allMoves(userMoves);
+        allMoves.insert(allMoves.end(), botMoves.begin(), botMoves.end());
+
+        for (int i = 0; i < BOARD_SIZE * BOARD_SIZE; ++i) {
+            if (std::find(allMoves.begin(), allMoves.end(), i) == allMoves.end()) {
+                return {i};
+            }
+        }
+        return {};
+    }
+};
+
+// Strategy 3: Follow a sequence while responding to user moves
+class Strategy3 : public TicTacToeStrategy {
+public:
+    std::vector<int> getBotMoves(const std::vector<int>& userMoves, const std::vector<int>& botMoves) override {
+        static const int sequence[BOARD_SIZE * BOARD_SIZE] = {2, 5, 7, 8, 1, 0, 6, 4, 3};
+        std::vector<int> allMoves(userMoves);
+        allMoves.insert(allMoves.end(), botMoves.begin(), botMoves.end());
+
+        for (int move : sequence) {
+            if (std::find(allMoves.begin(), allMoves.end(), move) == allMoves.end()) {
+                return {move};
+            }
+        }
+        return {};
+    }
+};
+
+// Strategy 4: Random moves
+class Strategy4 : public TicTacToeStrategy {
+public:
+    std::vector<int> getBotMoves(const std::vector<int>& userMoves, const std::vector<int>& botMoves) override {
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dis(0, BOARD_SIZE * BOARD_SIZE - 1);
+
+        std::vector<int> allMoves(userMoves);
+        allMoves.insert(allMoves.end(), botMoves.begin(), botMoves.end());
+
+        std::vector<int> availableMoves;
+        for (int i = 0; i < BOARD_SIZE * BOARD_SIZE; ++i) {
+            if (std::find(allMoves.begin(), allMoves.end(), i) == allMoves.end()) {
+                availableMoves.push_back(i);
+            }
+        }
+
+        if (!availableMoves.empty()) {
+            return {availableMoves[dis(gen) % availableMoves.size()]};
+        }
+        return {};
+    }
+};
+
+// Function to print the board
+void printBoard(const std::vector<int>& userMoves, const std::vector<int>& botMoves) {
+    char board[BOARD_SIZE * BOARD_SIZE] = {' '};
+    for (int move : userMoves) {
+        board[move] = 'O';
+    }
+    for (int move : botMoves) {
+        board[move] = 'X';
+    }
+    for (int i = 0; i < BOARD_SIZE * BOARD_SIZE; ++i) {
+        std::cout << board[i];
+        if ((i + 1) % BOARD_SIZE == 0) {
+            std::cout << std::endl;
+        } else {
+            std::cout << "|";
+        }
+    }
+    std::cout << "-----" << std::endl;
+}
+
+// Namespace containing hidden functions
+namespace hidden_stuff {
+    // Define hidden_main
+    std::vector<int> hidden_main(std::string&) {
+        // Implementation goes here
+        return {};
+    }
+    
+    // Define hidden strategies
+    std::map<std::string, std::pair<std::vector<int>(), std::vector<int>(std::vector<int>&)>> strategies = {
+        {"example_strategy", {std::vector<int>(), hidden_stuff::hidden_main}},
+        {"strategy_1", {std::vector<int>(), hidden_stuff::hidden_main}},
+        {"strategy_2", {std::vector<int>(), hidden_stuff::hidden_main}},
+        {"strategy_3", {std::vector<int>(), hidden_stuff::hidden_main}},
+        {"strategy_4", {std::vector<int>(), hidden_stuff::hidden_main}}
+    };
+}
+
+int main() {
+    // Sample user moves (replace with actual user input)
+    std::vector<int> userMoves = {}; // User moves will be added here
+    std::vector<int> botMoves = {}; // Bot moves will be added here
+
+    // Instantiate the strategies
+    Strategy1 strategy1;
+    Strategy2 strategy2;
+    Strategy3 strategy3;
+    Strategy4 strategy4;
+
+    // Choose a strategy to test
+    TicTacToeStrategy* strategy = &strategy1;  // Replace with desired strategy by changing to &strategy2, &strategy3, or &strategy4
+
+    // Example game loop
+    bool userTurn = false; // Set to true if you want the user to start
+    while (userMoves.size() + botMoves.size() < BOARD_SIZE * BOARD_SIZE) {
+        if (userTurn) {
+            // Here you can add logic to get user's move, for example from console input
+            int userMove;
+            std::cout << "Enter your move (0-8): ";
+            std::cin >> userMove;
+            userMoves.push_back(userMove);
+        } else {
+            // Get bot move
+            std::vector<int> newBotMoves = strategy->getBotMoves(userMoves, botMoves);
+            if (!newBotMoves.empty()) {
+                botMoves.push_back(newBotMoves[0]);
+            }
+        }
+        userTurn = !userTurn; // Switch turns
+        printBoard(userMoves, botMoves); // Print the board after each move
+    }
+
+    // You should add the logic to determine the winner and end the game when someone wins
+
+    // No need to delete strategy; as it's not dynamically allocated
+
+    return 0;
+}
