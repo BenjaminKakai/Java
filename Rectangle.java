@@ -1,19 +1,19 @@
-public class Rectangle extends Shape {
-    private double width;
-    private double height;
+public class Rectangle {
+    public static void main (String[] args) {
+        int h = 5;
+        int l = 60;
 
-    public Rectangle(double width, double height) {
-        this.width = width;
-        this.height = height;
-    }
+        for (int i = 1; i <= h; i++) {
+            for (int j = 1; j <= l; j++) {
+                if (i == 1 || i == h || j == 1 || j == l) {
+                    System.out.print("*");
+                }
+                else {
+                    System.out.print(" ");
+                }
 
-    @Override
-    public double calculateArea() {
-        return width * height;
-    }
-
-    @Override
-    public double calculatePerimeter() {
-        return 2 * (width + height);
+            }
+            System.out.println();
+        }
     }
 }
