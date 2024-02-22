@@ -1,0 +1,38 @@
+public class Person{
+    private String personName;
+    private int personAge;
+
+    public Person (String name, int age) {
+        this.personName = name;
+        this.personAge = age;
+    }
+
+    public String getPersonName() {
+        return personName;
+    }
+
+    public int getPersonAge() {
+        return personAge;
+    }
+
+    public boolean isEligibleVoter() {
+        return personAge >= 18;
+    }
+
+
+
+    public static void main (String[] args) {
+        Person person = new Person("Junior Kakai", 17);
+
+        System.out.println("Name: " + person.getPersonName());
+        System.out.println("Age: " + person.getPersonAge());
+
+        if (person.isEligibleVoter()) {
+            System.out.println (person.getPersonName() + " is Old enough to vote.");
+        }
+
+        else {
+            System.out.println(person.getPersonName() + " is not old enough to vote");
+        }
+    }
+}
