@@ -1,0 +1,16 @@
+public class Puppies implements Animal {
+    String puppies;
+
+    public Puppies(String puppies) {
+        this.puppies = puppies;
+    }
+
+    public String getName() {
+        return puppies;
+    }
+
+    public static void main(String[] args) {
+        Animal puppy = new Puppies("Jimmy");
+        System.out.println("The name of the puppy is: " + puppy.getName());
+    }
+}
