@@ -1,0 +1,22 @@
+// EmployeeRecordTest.java
+import java.io.*;
+
+public class EmployeeRecordTest {
+    public static void main(String args[]){
+        // Creating instances of EmployeeRecord
+        EmployeeRecord employee1 = new EmployeeRecord("Jack Wright");
+        EmployeeRecord employee2 = new EmployeeRecord("Mary John");
+
+        // Setting details for employee1
+        employee1.setEmployeeAge(32);
+        employee1.setEmployeeCompensation(5000);
+
+        // Setting details for employee2
+        employee2.setEmployeeAge(25);
+        employee2.setEmployeeCompensation(2000);
+
+        // Printing employee details
+        employee1.printEmployee();
+        employee2.printEmployee();
+    }
+}
