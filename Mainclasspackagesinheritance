@@ -1,0 +1,31 @@
+// EmployeeRecord.java
+import java.io.*;
+
+public class EmployeeRecord {
+    // Instance variables
+    int employeeAge;
+    String employeeName;
+    double employeeCompensation;
+
+    // Constructor to initialize employeeName
+    public EmployeeRecord(String employeeName){
+        this.employeeName = employeeName;
+    }
+
+    // Method to set employee's age
+    public void setEmployeeAge(int age){
+        employeeAge = age;
+    }
+
+    // Method to set employee's compensation
+    public void setEmployeeCompensation(double compensation){
+        employeeCompensation = compensation;
+    }
+
+    // Method to print employee details
+    public void printEmployee(){
+        System.out.println("Employee Name: " + employeeName);
+        System.out.println("Employee Age: " + employeeAge);
+        System.out.println("Employee Compensation: " + employeeCompensation);
+    }
+}
