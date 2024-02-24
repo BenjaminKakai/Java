@@ -1,0 +1,33 @@
+public class Main {
+    public static void main(String[] args) {
+        // Sample array of floats
+        float[] floatArray = {3.4f, 2.1f, 5.6f, 1.9f, 4.8f};
+
+        // Find the largest float in the array
+        float largestFloat = findLargestFloat(floatArray);
+
+        // Display the result
+        System.out.println("The largest float in the array is: " + largestFloat);
+    }
+
+    public static float findLargestFloat(float[] array) {
+        // Check if the array is empty
+        if (array == null || array.length == 0) {
+            throw new IllegalArgumentException("Array is empty or null");
+        }
+
+        // Initialize the maximum float with the first element of the array
+        float max = array[0];
+
+        // Iterate through the array starting from the second element
+        for (int i = 1; i < array.length; i++) {
+            // If current element is greater than max, update max
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+
+        // Return the maximum float found
+        return max;
+    }
+}
