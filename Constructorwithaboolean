@@ -1,0 +1,36 @@
+public class Cboolean {
+    private String name;
+    private int age;
+
+    public Cboolean (String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public boolean isOldenough() {
+        return age >= 18;
+    }
+
+
+    public static void main (String[] args) {
+        Cboolean cboolean = new Cboolean("Benjamin", 27);
+        System.out.println("Student's Name: " + cboolean.getName());
+        System.out.println("Student's Age: " + cboolean.getAge());
+
+        if (cboolean.isOldenough()) {
+            System.out.println (cboolean.getName() + " is old enough to vote");
+        }
+
+        else {
+            System.out.println(cboolean.getName() + " is not old enough to vote");
+        }
+    }
+}
