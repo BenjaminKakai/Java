@@ -1,0 +1,12 @@
+public class Main {
+    public static void main(String[] args) {
+        int dividend = 10;
+        int divisor = 3;
+
+        int quotient = dividend / divisor; // Integer division
+        int remainder = dividend % divisor; // Modulo operation
+
+        System.out.println("Quotient: " + quotient);
+        System.out.println("Remainder: " + remainder);
+    }
+}
