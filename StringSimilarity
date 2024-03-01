@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class StringSimilarity {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int num = Integer.parseInt(scanner.nextLine().trim());
+
+        while (num > 0) {
+            String s = scanner.nextLine().trim();
+            System.out.println(stringSimilarity(s));
+            num--;
+        }
+
+        scanner.close();
+    }
+
+    public static int stringSimilarity(String s) {
+        int similaritySum = 0;
+        int n = s.length();
+
+        for (int i = 0; i < n; i++) {
+            int similarity = 0;
+            int j = 0;
+
+            while (i + j < n && s.charAt(i + j) == s.charAt(j)) {
+                similarity++;
+                j++;
+            }
+
+            similaritySum += similarity;
+        }
+
+        return similaritySum;
+    }
+}
