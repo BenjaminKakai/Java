@@ -1,0 +1,58 @@
+// Importing the Scanner class to read input from the console
+import java.util.Scanner;
+
+// Defining the class StringSimilarity
+public class StringSimilarity {
+    // Main method
+    public static void main(String[] args) {
+        // Creating a Scanner object to read input from the console
+        Scanner scanner = new Scanner(System.in);
+        // Reading the number of test cases and parsing it as an integer
+        int numTestCases = Integer.parseInt(scanner.nextLine().trim());
+
+        // Loop to iterate through each test case
+        while (numTestCases > 0) {
+            // Reading the input string for the current test case and removing leading/trailing whitespace
+            String inputString = scanner.nextLine().trim();
+            // Calculating the similarity of the input string and storing the result
+            int similaritySum = calculateSimilarity(inputString);
+            // Printing the similarity sum for the current test case
+            System.out.println(similaritySum);
+            // Decrementing the number of remaining test cases
+            numTestCases--;
+        }
+
+        // Closing the Scanner object to release resources
+        scanner.close();
+    }
+
+    // Method to calculate string similarity
+    private static int calculateSimilarity(String s) {
+        // Variable to store the sum of similarities
+        int similaritySum = 0;
+        // Length of the input string
+        int length = s.length();
+
+        // Loop to iterate through each character of the input string
+        for (int i = 0; i < length; i++) {
+            // Variable to store the similarity of the current suffix
+            int similarity = 0;
+            // Initializing index for comparing characters
+            int j = 0;
+
+            // Loop to compare characters of the suffix with the original string
+            while (i + j < length && s.charAt(i + j) == s.charAt(j)) {
+                // Incrementing similarity if characters match
+                similarity++;
+                // Moving to the next character in both the suffix and the original string
+                j++;
+            }
+
+            // Adding the similarity of the current suffix to the total similarity sum
+            similaritySum += similarity;
+        }
+
+        // Returning the total similarity sum for the input string
+        return similaritySum;
+    }
+}
